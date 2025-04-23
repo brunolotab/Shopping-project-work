@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+import About from './pages/About/About';
+import Footer from './components/Footer/Footer';
+import Detail from './pages/Details/Detail';
+import { products } from './data/products';
 
 
 function App() {
 
-  const [storeProducts, setStoreProducts] = useState(products);
+  const menWear = products.filter((id)=>{return id.category === 'jewelery'})
+
+  const [storeProducts, setStoreProducts] = useState(menWear);
   const [cartCount, setCartCount] = useState({ count: 0 });
 
   const updateCart = () => {
@@ -17,11 +25,12 @@ function App() {
 
       <BrowserRouter>
         <Navbar count={cartCount} />
-        <Routes>
-          <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
-          <Route parth='/about' element={<About />} />
-          <Route parth='/signin' element={<Signin />} />
-        </Routes>
+          <Routes>
+            <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
+            <Route parth='/about' element={<About />} />
+            <Route parth='/signin' element={<Signin />} />
+            <Route parth='/product/:productid' element={<Detail />} />
+          </Routes>
         <Footer />
       </BrowserRouter>
     </>
