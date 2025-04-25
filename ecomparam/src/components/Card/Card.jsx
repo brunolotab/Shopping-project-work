@@ -5,9 +5,9 @@ function Card({product, count, updateCount}) {
 
     // let titledlug = product.title.replace(/\s+/g,'-').tolowerCase();
   return (
-    <div>
+    <div className='w-[400px]'>
         <div className=''>
-            <img src={product.image} alt=''/>
+            <img src={product.image} alt='' className='w-[150px] border-0'/>
         </div>
         <div className=''>
             <Link to={`/product/${product.id}`}>{product.title}</Link>

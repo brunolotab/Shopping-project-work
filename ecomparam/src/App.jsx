@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import About from './pages/About/About';
 import Footer from './components/Footer/Footer';
 import Detail from './pages/Details/Detail';
+import Signin from './pages/Signin/Signin';
 import { products } from './data/products';
 
 
@@ -27,9 +28,9 @@ function App() {
         <Navbar count={cartCount} />
           <Routes>
             <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
-            <Route parth='/about' element={<About />} />
-            <Route parth='/signin' element={<Signin />} />
-            <Route parth='/product/:productid' element={<Detail />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/signin' element={<Signin />} />
+            <Route path='/product/:productid' element={<Detail />} />
           </Routes>
         <Footer />
       </BrowserRouter>
