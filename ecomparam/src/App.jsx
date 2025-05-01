@@ -9,11 +9,18 @@ import Signin from './pages/Signin/Signin';
 import { products } from './data/products';
 
 
+
 function App() {
+  // const isLoggedIn = window.localStorage.getItem('loggedIn'); //check if logged in
+  // const userType = window.localStorage.getItem('userType');
 
-  const menWear = products.filter((id)=>{return id.category === 'jewelery'})
+  const jewelery = products.filter((id)=>{return id.category === 'jewelery'})
+  const menWear = products.filter((id)=>{return id.category === "men's clothing"})
+  const electronics = products.filter((id)=>{return id.category === 'electronics'})
 
-  const [storeProducts, setStoreProducts] = useState(menWear);
+  const [storeProducts, setStoreProducts] = useState(jewelery);
+  const [storeProduct2, setStoreProduct2] = useState(menWear);
+  const [storeProduct3, setStoreProduct3] = useState(electronics);
   const [cartCount, setCartCount] = useState({ count: 0 });
 
   const updateCart = () => {
@@ -27,10 +34,14 @@ function App() {
       <BrowserRouter>
         <Navbar count={cartCount} />
           <Routes>
+            <Route index  element={<Home products={products} count={cartCount} updateCount={updateCart} />} />
             <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/home2' element={<Home products={storeProduct2} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/home3' element={<Home products={storeProduct3} count={cartCount} updateCount={updateCart} />} />
             <Route path='/about' element={<About />} />
             <Route path='/signin' element={<Signin />} />
-            <Route path='/product/:productid' element={<Detail products={storeProducts} />} />
+            <Route path='/product/:productid' element={<Detail products={products } />} />
+            {/* <Route path='/product/:productid' element={<Detail products={storeProducts} />} /> */}
           </Routes>
         <Footer />
       </BrowserRouter>

@@ -5,12 +5,17 @@ import Card from '../../components/Card/Card';
 
 
 function Home({products,count, updateCount}) {
+  console.log(products);
+  
+  
   return (
-    <div className='flex w-[100%] justify-center'>
+    <div className='flex flex-wrap gap-[1rem] w-[100%] justify-center'>
         
         {
-          products.map(product =>  <div key={product.id} className='border border-b-2 m-[12px] w-[300px]'><Card product ={product} count={count} updateCount={updateCount} /> </div>)
+          products.map(product =>  <div key={product.id} className='border border-b-2 m-[12px] w-[250px]'><Card product ={product} count={count} updateCount={updateCount} /> </div>)
         }
+     
+      
         
         
     </div>
