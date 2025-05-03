@@ -14,7 +14,8 @@ import PrivateRoutes from './components/PrivateRoute/PrivateRoutes';
 function App() {
   // const isLoggedIn = window.localStorage.getItem('loggedIn'); //check if logged in
   // const userType = window.localStorage.getItem('userType');
-  const admin = JSON.parse(sessionStorage.getItem('admin'))
+  const admin = JSON.parse(localStorage.getItem("item"))
+
 
   const jewelery = products.filter((id)=>{return id.category === 'jewelery'})
   const menWear = products.filter((id)=>{return id.category === "men's clothing"})
@@ -36,12 +37,23 @@ function App() {
       <BrowserRouter>
         <Navbar count={cartCount} />
           <Routes>
+            {
+              admin && <>
+            <Route path='/' element={<Home products={products} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/home2' element={<Home products={storeProduct2} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/home3' element={<Home products={storeProduct3} count={cartCount} updateCount={updateCart} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/signin' element={<Signin />} />
+              </>
+            }
+           
             <Route path='/' element={<Home products={products} count={cartCount} updateCount={updateCart} />} />
             <Route element={<PrivateRoutes/>}>
             <Route path='/home' element={<Home products={storeProducts} count={cartCount} updateCount={updateCart} />} />
             <Route path='/home2' element={<Home products={storeProduct2} count={cartCount} updateCount={updateCart} />} />
             <Route path='/home3' element={<Home products={storeProduct3} count={cartCount} updateCount={updateCart} />} />
-            </Route>
+            </Route> 
             <Route path='/about' element={<About />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/product/:productid' element={<Detail products={products } />} />

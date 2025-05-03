@@ -29,7 +29,7 @@ function Signin() {
         if (input.email === 'Admin') {
         
           localStorage.setItem("item", JSON.stringify(input));
-        //  return window.location.assign('/')
+         return window.location.assign('/')
 
         }
         
