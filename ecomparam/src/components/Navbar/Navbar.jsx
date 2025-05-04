@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Navbar({ count }) {
 
@@ -7,6 +7,8 @@ function Navbar({ count }) {
   const admins = JSON.parse(localStorage.getItem("item"))
 
   console.log(admins);
+  const [toggle, setToggle] = useState(false)
+  const navigate = useNavigate()
 
 
 
@@ -22,7 +24,7 @@ function Navbar({ count }) {
               <li> <Link to='/home2'>Cloths</Link></li>
               <li> <Link to='/home3'>Electronics</Link></li>
               <li> <Link to='/about'>About</Link></li>
-              <li> <Link to='/signin' className='p-[8px] bg-[blue]' style={{ color: '#ffff' }}>Signin</Link></li>
+              <button onClick={()=> {localStorage.clear(); navigate('/signin'); setToggle(!toggle)}}>{toggle? 'Signin' : 'SignOut'}</button>
             </>
             :
             <>

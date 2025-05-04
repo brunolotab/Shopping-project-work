@@ -56,8 +56,8 @@ function App() {
             </Route> 
             <Route path='/about' element={<About />} />
             <Route path='/signin' element={<Signin />} />
+            <Route path='/signout' element={<Signin />} />
             <Route path='/product/:productid' element={<Detail products={products } />} />
-            {/* <Route path='/product/:productid' element={<Detail products={storeProducts} />} /> */}
           </Routes>
         <Footer />
       </BrowserRouter>
